@@ -1,27 +1,23 @@
 package steps;
 
-import io.cucumber.java.After;
 import io.cucumber.java.pt.Dado;
 import io.cucumber.java.pt.Entao;
 import io.cucumber.java.pt.Quando;
 import org.junit.Assert;
 import pages.LoginPage;
-import runner.RunBase;
+import runner.Util;
 
 import java.io.IOException;
 
-public class LoginSteps extends RunBase {
+public class LoginSteps {
     private LoginPage loginPage;
+    private Util util;
 
-    public LoginSteps() {
-        initDriver();
+    public LoginSteps() throws IOException {
         loginPage = new LoginPage();
+        util = new Util();
     }
 
-    @After
-    public void closeBrowser() {
-        getDriver().quit();
-    }
 
     @Dado("que estou na tela de login")
     public void queEstouNaTelaDeLogin() throws IOException {
@@ -31,8 +27,8 @@ public class LoginSteps extends RunBase {
 
     @Quando("preencho login {string} e senha {string}")
     public void preenchoLoginESenha(String user, String password) throws IOException {
-        String username = getProperties(user);
-        String pass = getProperties(password);
+        String username = util.getProperty(user);
+        String pass = util.getProperty(password);
         loginPage.fillUsername(username);
         loginPage.fillPassword(pass);
     }
@@ -69,8 +65,8 @@ public class LoginSteps extends RunBase {
     public void queEstouLogadoNaAplicacaoComUserESenha(String user, String password) throws IOException {
         loginPage.openApp();
         loginPage.openLogin();
-        String username = getProperties(user);
-        String pass = getProperties(password);
+        String username = util.getProperty(user);
+        String pass = util.getProperty(password);
         loginPage.fillUsername(username);
         loginPage.fillPassword(pass);
         loginPage.clickInLogin();
