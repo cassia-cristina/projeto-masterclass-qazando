@@ -3,9 +3,9 @@ package pages;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import runner.RunBase;
+import runner.Driver;
 
-public class RegisterPage extends RunBase {
+public class RegisterPage extends Driver {
 
     @FindBy(id = "btnRegister")
     private WebElement btnRegister;

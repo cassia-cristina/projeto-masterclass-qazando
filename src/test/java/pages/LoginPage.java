@@ -3,11 +3,14 @@ package pages;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import runner.RunBase;
+import runner.Driver;
+import runner.Util;
 
 import java.io.IOException;
 
-public class LoginPage extends RunBase {
+public class LoginPage {
+
+    private Util util;
 
     @FindBy(css = ".right_list_fix > li > a > .fa-user")
     private WebElement clickLogin;
@@ -33,12 +36,13 @@ public class LoginPage extends RunBase {
     @FindBy(css = "button.swal2-confirm")
     private WebElement btnConfirm;
 
-    public LoginPage() {
-        PageFactory.initElements(getDriver(), this);
+    public LoginPage() throws IOException {
+        util= new Util();
+        PageFactory.initElements(Driver.getDriver(), this);
     }
 
     public void openApp() throws IOException {
-        getDriver().get(getProperties("site_url"));
+        Driver.getDriver().get(util.getProperty("site_url"));
     }
 
     public void openLogin() {

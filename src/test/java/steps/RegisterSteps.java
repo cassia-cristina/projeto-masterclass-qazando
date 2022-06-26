@@ -4,9 +4,9 @@ import io.cucumber.java.pt.E;
 import io.cucumber.java.pt.Entao;
 import org.junit.Assert;
 import pages.RegisterPage;
-import runner.RunBase;
+import runner.Driver;
 
-public class RegisterSteps extends RunBase {
+public class RegisterSteps extends Driver {
     RegisterPage registerPage;
 
     public RegisterSteps() {

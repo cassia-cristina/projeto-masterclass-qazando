@@ -7,12 +7,9 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
-public class RunBase {
+public class Driver {
 
     public static WebDriver driver;
     //public enum Browser {CHROME, FIREFOX, EDGE}
@@ -69,14 +66,6 @@ public class RunBase {
 
     public static WebDriver getDriver() {
         return driver;
-    }
-
-    public String getProperties(String nameProperties) throws IOException {
-        Properties properties = new Properties();
-        FileInputStream file = new FileInputStream("src/test/resources/application-local.properties");
-        properties.load(file);
-        file.close();
-        return properties.getProperty(nameProperties);
     }
 
 }
